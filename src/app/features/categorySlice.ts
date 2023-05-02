@@ -1,15 +1,17 @@
 import { createSlice , PayloadAction } from "@reduxjs/toolkit";
 
-
+const initialState = {
+    category:['All']
+}
 
 const categorySlice = createSlice({
     name:'category',
-    initialState:['All'],
+    initialState,
     reducers:{
         addCategory:(state , action:PayloadAction<string>) =>{
-            const existCategory = state.find((item:string)=>item.toLowerCase() === action.payload.toLowerCase())
+            const existCategory = state.category.find((item:string)=>item.toLowerCase() === action.payload.toLowerCase())
             if(!existCategory){
-                state.push(action.payload)
+                state.category.push(action.payload)
             }
         }
     }
